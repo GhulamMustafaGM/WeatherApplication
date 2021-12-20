@@ -9,8 +9,8 @@ let temperature = document.querySelector('.weather__temperature>.value');
 let forecastBlock = document.querySelector('.weather__forecast');
 let suggestions = document.querySelector('#suggestions');
 let weatherAPIKey = '7c861befb1e48ef11455dfe730fd7d14';
-let weatherBaseEndpoint = 'https://api.openweathermap.org/data/2.5/weather?units=metric&appid=' + weatherAPIKey;
-let forecastBaseEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=' + weatherAPIKey;
+let weatherBaseEndpoint = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&appid=' + weatherAPIKey;
+let forecastBaseEndpoint = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&appid=' + weatherAPIKey;
 let cityBaseEndpoint = 'https://api.teleport.org/api/cities/?search=';
 
 let weatherImages = [
@@ -97,7 +97,7 @@ let weatherForCity = async (city) => {
     updateForecast(forecast);
 }
 let init = () => {
-    weatherForCity('Dubai').then(() => document.body.style.filter = 'blur(0)');
+    weatherForCity('New York').then(() => document.body.style.filter = 'blur(0)');
 }
 init();
 
@@ -160,7 +160,7 @@ let updateForecast = (forecast) => {
             <article class="weather__forecast__item">
                 <img src="${iconUrl}" alt="${day.weather[0].description}" class="weather__forecast__icon">
                 <h3 class="weather__forecast__day">${dayName}</h3>
-                <p class="weather__forecast__temperature"><span class="value">${temperature}</span> &deg;C</p>
+                <p class="weather__forecast__temperature"><span class="value">${temperature}</span> &deg;F</p>
             </article>
         `;
         forecastBlock.insertAdjacentHTML('beforeend', forecatItem);
